@@ -14,16 +14,19 @@ export function FeedbackContentStep({ feedbackType, setFeedbackSent }: IProps) {
   const [screenshot, setScreenshot] = useState<string>();
   const [isSendingFeedback, setIsSendingFeedback] = useState<boolean>(false);
 
-  async function handleSubmitFeedback(event: FormEvent) {
+  function handleSubmitFeedback(event: FormEvent) {
     event.preventDefault();
     try {
-      await api.post("/feedbacks", {
-        type: feedbackType,
-        comment: feedback,
-        screenshot: screenshot,
-      });
+      api
+        .post("/feedbacks", {
+          type: feedbackType,
+          comment: feedback,
+          screenshot: screenshot,
+        })
+        .then(() => {
+          setFeedbackSent(true);
+        });
 
-      setFeedbackSent(true);
       setIsSendingFeedback(false);
     } catch (error: any) {
       setIsSendingFeedback(false);
