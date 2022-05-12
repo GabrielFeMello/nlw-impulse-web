@@ -14,7 +14,7 @@ body {
 }
 
 .widgetButton {
-  @apply bg-brand-500 rounded-full rounded-full px-3 h-12 text-white flex items-center
+  @apply bg-brand-500 dark:bg-zinc-800 rounded-full rounded-full px-3 h-12 text-white dark:text-zinc-200 flex items-center
 }
 
 .widgetIcon {
